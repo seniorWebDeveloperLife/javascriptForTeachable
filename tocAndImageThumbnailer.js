@@ -27,8 +27,9 @@ $('img.img-responsive').on('click', function(){
 });
 
     $('div.post-content :header').each(function( index ) {
-        var linkText = $( this ).text().replace(/\s/g, '');
-        $( "#tableOfContents" ).append( "<p><a href='#" + linkText + "' onclick=\"    setTimeout(function(){ $('html, body').animate({scrollTop: '-=85px'}, 100)}, 100);\n\">" +$( this ).text() + "</a></p>" );
-        $( this ).before('<a name="' + linkText + '" href="#top">(top)</a><br>');
+        var slugText = $( this ).text().replace(/\s/g, '');
+	var linkText =  "<br><a href='#" + slugText + "' onclick=\"setTimeout(function(){ $('html, body').animate({scrollTop: '-=85px'}, 100)}, 100);\">" +$( this ).text() + "</a>" ;
+        $( "#tableOfContents" ).append( linkText);
+        $( this ).before('<a name="' + slugText + '" href="#top">(top)</a><br>');
     });
 });
