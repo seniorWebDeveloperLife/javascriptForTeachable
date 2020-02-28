@@ -42,10 +42,18 @@ $(document).ready(function(){
 	/*
 	**** 	Table Of Contents Generator
 	*/
-	
+	var indentAmount = 20; /* pixels to indent */
     	$('div.post-content :header').each(function( index ) {
        	 	var slugText = $( this ).text().replace(/\s/g, '');
-		var linkText =  "<br><a href='#" + slugText + "' onclick=\"setTimeout(function(){ $('html, body').animate({scrollTop: '-=85px'}, 100)}, 100);\">" +$( this ).text() + "</a>" ;
+		
+		var indentString  = '';
+		var indentMultiplierRegex  = /<h(\d+)/g.exec($( this )[0].outerHTML); 
+
+		if(indentMultiplierRegex != null){
+			var indentValue = indentMultiplierRegex[1] * indentAmount;
+			indentString = ' style="margin-left: ' + indentValue + 'px"';
+		   }
+		var linkText =  "<br><a " + indentString + " href='#" + slugText + "' onclick=\"setTimeout(function(){ $('html, body').animate({scrollTop: '-=85px'}, 100)}, 100);\">" +$( this ).text() + "</a>" ;
         	$( "#tableOfContents" ).append( linkText);
         	$( this ).before('<a name="' + slugText + '" href="#top">(top)</a><br>');
     	});
