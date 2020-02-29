@@ -64,12 +64,9 @@ $(document).ready(function(){
 		}else{
 			isFirstLink = false;
 		}
-		// if this is the last one, scroll the document
-		if (!--count){
-			// scroll the document to the correct spot in case of deep link
-			document.location = document.location;
-			scrollWindowPastBar();
-		}
-    	});
+    	}).promise().done(function(){
+		// scroll the document to the correct spot in case of deep link
+		document.location = document.location;
+		scrollWindowPastBar();});
 
 });
