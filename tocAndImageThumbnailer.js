@@ -45,7 +45,9 @@ $(document).ready(function(){
 	*/
 	var indentAmount = 20; /* pixels to indent */
 	var isFirstLink = true;
-	$('div.post-content :header').each(function( index ) {
+	var headers = $('div.post-content :header');
+	count = headers.length;
+	headers.each(function( index ) {
        	 	var slugText = $( this ).text().replace(/\s/g, '');
 		
 		var indentString  = '';
@@ -62,9 +64,12 @@ $(document).ready(function(){
 		}else{
 			isFirstLink = false;
 		}
-		
+		// if this is the last one, scroll the document
+		if (!--count){
+			// scroll the document to the correct spot in case of deep link
+			document.location = document.location;
+			scrollWindowPastBar();
+		}
     	});
-	// scroll the document to the correct spot in case of deep link
-	document.location = document.location;
-	scrollWindowPastBar();
+
 });
