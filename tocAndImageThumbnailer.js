@@ -64,9 +64,9 @@ $(document).ready(function(){
 		}else{
 			isFirstLink = false;
 		}
-    	}).promise().done(function(){
+    	}).promise().done(setTimeout(function(){
 		// scroll the document to the correct spot in case of deep link
 		document.location = document.location;
-		scrollWindowPastBar();});
+		scrollWindowPastBar();}, 250);
 
 });
