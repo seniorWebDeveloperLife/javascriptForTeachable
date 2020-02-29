@@ -20,7 +20,8 @@ function toggleWidth(image){
    sWidth = getWidth(image[0].width);
    $(image[0]).attr('width', sWidth);	
 }
-	
+
+function scrollWindowPastBar(){ setTimeout(function(){ $('html, body').animate({scrollTop: '-=85px'}, 100)}, 100);}    		
 	
 $(document).ready(function(){
 
@@ -44,8 +45,7 @@ $(document).ready(function(){
 	*/
 	var indentAmount = 20; /* pixels to indent */
 	var isFirstLink = true;
-	function scrollWindowPastBar(){ setTimeout(function(){ $('html, body').animate({scrollTop: '-=85px'}, 100)}, 100);}
-    	$('div.post-content :header').each(function( index ) {
+	$('div.post-content :header').each(function( index ) {
        	 	var slugText = $( this ).text().replace(/\s/g, '');
 		
 		var indentString  = '';
