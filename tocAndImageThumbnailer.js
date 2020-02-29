@@ -43,6 +43,7 @@ $(document).ready(function(){
 	**** 	Table Of Contents Generator
 	*/
 	var indentAmount = 20; /* pixels to indent */
+	var isFirstLink = true;
     	$('div.post-content :header').each(function( index ) {
        	 	var slugText = $( this ).text().replace(/\s/g, '');
 		
@@ -55,6 +56,10 @@ $(document).ready(function(){
 		   }
 		var linkText =  "<br><a " + indentString + " href='#" + slugText + "' onclick=\"setTimeout(function(){ $('html, body').animate({scrollTop: '-=85px'}, 100)}, 100);\">" +$( this ).text() + "</a>" ;
         	$( "#tableOfContents" ).append( linkText);
-        	$( this ).before('<a name="' + slugText + '" href="#top">(top)</a><br>');
+		if(!isFirstLink){
+        		$( this ).before('<a name="' + slugText + '" href="#top">(top)</a><br>');
+		}else{
+			isFirstLink = false;
+		}
     	});
 });
