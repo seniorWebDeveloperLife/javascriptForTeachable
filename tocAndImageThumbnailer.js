@@ -51,6 +51,7 @@ $(document).ready(function(){
        	 	var slugText = $( this ).text().replace(/\s/g, '');
 		
 		var indentString  = '';
+		// turn the Hx value into an integer: h2 => 2, h4 => 4, etc.
 		var indentMultiplierRegex  = /<h(\d+)/g.exec($( this )[0].outerHTML); 
 
 		if(indentMultiplierRegex != null){
@@ -60,7 +61,7 @@ $(document).ready(function(){
 		var linkText =  "<br><a " + indentString + " href='#" + slugText + "' onclick=\"scrollWindowPastBar()\">" +$( this ).text() + "</a>" ;
         	$( "#tableOfContents" ).append( linkText);
 		if(!isFirstLink){
-        		$( this ).before('<a name="' + slugText + '" href="#top">(top)</a><br>');
+        		$( this ).before('<a name="' + slugText + '" href="#top">(top)</a>');
 		}else{
 			isFirstLink = false;
 		}
