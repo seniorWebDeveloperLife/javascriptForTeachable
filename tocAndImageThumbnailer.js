@@ -67,7 +67,7 @@ $(document).ready(function(){
 		}
     	}).promise().done(setTimeout(function(){
 		// scroll the document to the correct spot in case of deep link
-		document.location = document.location;
+		// document.location = document.location;
 		scrollWindowPastBar();}, 250));
 
 });
