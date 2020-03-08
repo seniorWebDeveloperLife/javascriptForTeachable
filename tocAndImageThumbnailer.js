@@ -1,4 +1,18 @@
+/*
+**** 	adding custom CSS file to the header
+*/
 
+var head = document.getElementsByTagName("head")[0],
+
+    cssLink = document.createElement("link");
+
+cssLink.href = "https://seniorwebdeveloperlife.github.io/javascriptForTeachable/custom.css";
+cssLink.id="dynamic-css";
+cssLink.rel = "stylesheet";
+cssLink.media="screen";
+cssLink.type="text/css";
+
+head.appendChild(cssLink);
 
 /*
 **** 	image thumbnailer functions
